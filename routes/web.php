@@ -5,6 +5,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\SiteSettingController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ClassController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,7 +47,13 @@ Route::group(['middleware'=>['auth']], function() {
         Route::get('/',[SiteSettingController::class, 'index'])->name('index');
         Route::post('/update/{id}', [SiteSettingController::class, 'update'])->name('update');
     });
-    
+
+    Route::group(['prefix' => 'academy/class', 'as' => 'class.'], function () {
+        Route::get('/',[ClassController::class, 'index'])->name('index');
+        Route::post('/store',[ClassController::class, 'store'])->name('store');
+        Route::get('/eidt/{id}',[ClassController::class, 'edit'])->name('edit');
+        Route::get('/delete/{id}',[ClassController::class, 'delete'])->name('delete');
+    });
 });
 
 Auth::routes();

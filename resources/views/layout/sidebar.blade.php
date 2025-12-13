@@ -34,13 +34,14 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
             aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-users"></i>
-            <span>Patient</span>
+            <i class="fas fa-fw fa-home"></i>
+            <span>Acamedic</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="buttons.html"><i class="fas fa-fw fa-arrow-right mr-2"></i> Patient List</a>
-                <a class="collapse-item" href="cards.html"><i class="fas fa-fw fa-arrow-right mr-2"></i> Add Patient</a>
+                <a class="collapse-item" href="{{route('class.index')}}"><i class="fas fa-fw fa-arrow-right mr-2"></i> Class</a>
+                <a class="collapse-item" href="cards.html"><i class="fas fa-fw fa-arrow-right mr-2"></i> Section</a>
+                <a class="collapse-item" href="cards.html"><i class="fas fa-fw fa-arrow-right mr-2"></i> Session</a>
             </div>
         </div>
     </li>

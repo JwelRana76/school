@@ -6,6 +6,7 @@ use App\Http\Controllers\SiteSettingController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClassController;
+use App\Http\Controllers\SectionController;
 use App\Http\Controllers\SessionController;
 
 /*
@@ -60,6 +61,12 @@ Route::group(['middleware'=>['auth']], function() {
         Route::post('/store',[SessionController::class, 'store'])->name('store');
         Route::get('/eidt/{id}',[SessionController::class, 'edit'])->name('edit');
         Route::get('/delete/{id}',[SessionController::class, 'delete'])->name('delete');
+    });
+    Route::group(['prefix' => 'academy/section', 'as' => 'section.'], function () {
+        Route::get('/',[SectionController::class, 'index'])->name('index');
+        Route::post('/store',[SectionController::class, 'store'])->name('store');
+        Route::get('/eidt/{id}',[SectionController::class, 'edit'])->name('edit');
+        Route::get('/delete/{id}',[SectionController::class, 'delete'])->name('delete');
     });
 });
 

@@ -41,7 +41,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{route('class.index')}}"><i class="fas fa-fw fa-arrow-right mr-2"></i> Class</a>
                 <a class="collapse-item" href="cards.html"><i class="fas fa-fw fa-arrow-right mr-2"></i> Section</a>
-                <a class="collapse-item" href="cards.html"><i class="fas fa-fw fa-arrow-right mr-2"></i> Session</a>
+                <a class="collapse-item" href="{{route('session.index')}}""><i class="fas fa-fw fa-arrow-right mr-2"></i> Session</a>
             </div>
         </div>
     </li>

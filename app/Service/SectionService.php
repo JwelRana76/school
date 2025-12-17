@@ -25,12 +25,12 @@ class SectionService {
     try {
       if ($data['id'] == null) {
         $this->model::create([
-          'name' => $data['name'],
+          'name' => strtolower($data['name']),
         ]);
         $message = ['success' => 'Section Inserted Successfully'];
       } else {
         $this->model::findOrFail($data['id'])->update([
-          'name' => $data['name'],
+          'name' => strtolower($data['name']),
         ]);
         $message = ['success' => 'Section Updated Successfully'];
       }

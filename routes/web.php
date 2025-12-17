@@ -53,19 +53,19 @@ Route::group(['middleware'=>['auth']], function() {
     Route::group(['prefix' => 'academy/class', 'as' => 'class.'], function () {
         Route::get('/',[ClassController::class, 'index'])->name('index');
         Route::post('/store',[ClassController::class, 'store'])->name('store');
-        Route::get('/eidt/{id}',[ClassController::class, 'edit'])->name('edit');
+        Route::get('/edit/{id}',[ClassController::class, 'edit'])->name('edit');
         Route::get('/delete/{id}',[ClassController::class, 'delete'])->name('delete');
     });
     Route::group(['prefix' => 'academy/session', 'as' => 'session.'], function () {
         Route::get('/',[SessionController::class, 'index'])->name('index');
         Route::post('/store',[SessionController::class, 'store'])->name('store');
-        Route::get('/eidt/{id}',[SessionController::class, 'edit'])->name('edit');
+        Route::get('/edit/{id}',[SessionController::class, 'edit'])->name('edit');
         Route::get('/delete/{id}',[SessionController::class, 'delete'])->name('delete');
     });
     Route::group(['prefix' => 'academy/section', 'as' => 'section.'], function () {
         Route::get('/',[SectionController::class, 'index'])->name('index');
         Route::post('/store',[SectionController::class, 'store'])->name('store');
-        Route::get('/eidt/{id}',[SectionController::class, 'edit'])->name('edit');
+        Route::get('/edit/{id}',[SectionController::class, 'edit'])->name('edit');
         Route::get('/delete/{id}',[SectionController::class, 'delete'])->name('delete');
     });
 });

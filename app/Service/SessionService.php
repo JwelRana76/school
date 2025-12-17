@@ -25,12 +25,12 @@ class SessionService {
     try {
       if ($data['id'] == null) {
         $this->model::create([
-          'name' => $data['name'],
+          'name' => strtolower($data['name']),
         ]);
         $message = ['success' => 'Session Inserted Successfully'];
       } else {
         $this->model::findOrFail($data['id'])->update([
-          'name' => $data['name'],
+          'name' => strtolower($data['name']),
         ]);
         $message = ['success' => 'Session Updated Successfully'];
       }

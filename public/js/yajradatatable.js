@@ -1,3 +1,8 @@
+function sentenceCase(text) {
+    if (!text) return '';
+    text = text.toString().toLowerCase();
+    return text.charAt(0).toUpperCase() + text.slice(1);
+}
 function itd_makeDataTable(e = "", n = "", t = []) {
     const o = new DataTable(e, {
         serverSide: true,
@@ -31,7 +36,18 @@ function itd_makeDataTable(e = "", n = "", t = []) {
                     );
                 },
             },
-            ...t,
+            ...t.map(col => {
+                if (col.data === 'action') return col;
+                if (!col.render) {
+                    col.render = function (data, type) {
+                        if (type === 'display' && typeof data === 'string') {
+                            return sentenceCase(data);
+                        }
+                        return data;
+                    };
+                }
+                return col;
+            }),
         ],
         dom: '<lBf<t>i<"m-0"p>>',
         buttons: [

@@ -21,16 +21,17 @@ class ClassService {
 
   public function create($data)
   {
+    dd($data);
     DB::beginTransaction();
     try {
       if ($data['id'] == null) {
         $this->model::create([
-          'name' => $data['name'],
+          'name' => strtolower($data['name']),
         ]);
         $message = ['success' => 'Class Inserted Successfully'];
       } else {
         $this->model::findOrFail($data['id'])->update([
-          'name' => $data['name'],
+          'name' => strtolower($data['name']),
         ]);
         $message = ['success' => 'Class Updated Successfully'];
       }

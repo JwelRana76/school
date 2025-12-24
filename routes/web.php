@@ -1,13 +1,20 @@
 <?php
 
+use App\Http\Controllers\BloodGroupController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\SiteSettingController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClassController;
+use App\Http\Controllers\DistrictController;
+use App\Http\Controllers\DivisionController;
+use App\Http\Controllers\GenderController;
+use App\Http\Controllers\ReligionController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\UpazilaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +56,44 @@ Route::group(['middleware'=>['auth']], function() {
         Route::get('/',[SiteSettingController::class, 'index'])->name('index');
         Route::post('/update/{id}', [SiteSettingController::class, 'update'])->name('update');
     });
+    Route::group(['prefix' => 'setting/division', 'as' => 'division.'], function () {
+        Route::get('/',[DivisionController::class, 'index'])->name('index');
+        Route::post('/store',[DivisionController::class, 'store'])->name('store');
+        Route::get('/edit/{id}',[DivisionController::class, 'edit'])->name('edit');
+        Route::get('/delete/{id}',[DivisionController::class, 'delete'])->name('delete');
+        Route::post('/divisionstore', [DivisionController::class, 'divisionstore'])->name('divisionstore');
+    });
+    Route::group(['prefix' => 'setting/district', 'as' => 'district.'], function () {
+        Route::get('/',[DistrictController::class, 'index'])->name('index');
+        Route::post('/store',[DistrictController::class, 'store'])->name('store');
+        Route::get('/edit/{id}',[DistrictController::class, 'edit'])->name('edit');
+        Route::get('/delete/{id}',[DistrictController::class, 'delete'])->name('delete');
+        Route::post('/districtstore', [DistrictController::class, 'districtstore'])->name('districtstore');
+    });
+    Route::group(['prefix' => 'setting/upazila', 'as' => 'upazila.'], function () {
+        Route::get('/',[UpazilaController::class, 'index'])->name('index');
+        Route::post('/store',[UpazilaController::class, 'store'])->name('store');
+        Route::get('/edit/{id}',[UpazilaController::class, 'edit'])->name('edit');
+        Route::get('/delete/{id}',[UpazilaController::class, 'delete'])->name('delete');
+    });
+    Route::group(['prefix' => 'setting/blood_group', 'as' => 'blood_group.'], function () {
+        Route::get('/',[BloodGroupController::class, 'index'])->name('index');
+        Route::post('/store',[BloodGroupController::class, 'store'])->name('store');
+        Route::get('/edit/{id}',[BloodGroupController::class, 'edit'])->name('edit');
+        Route::get('/delete/{id}',[BloodGroupController::class, 'delete'])->name('delete');
+    });
+    Route::group(['prefix' => 'setting/religion', 'as' => 'religion.'], function () {
+        Route::get('/',[ReligionController::class, 'index'])->name('index');
+        Route::post('/store',[ReligionController::class, 'store'])->name('store');
+        Route::get('/edit/{id}',[ReligionController::class, 'edit'])->name('edit');
+        Route::get('/delete/{id}',[ReligionController::class, 'delete'])->name('delete');
+    });
+    Route::group(['prefix' => 'setting/gender', 'as' => 'gender.'], function () {
+        Route::get('/',[GenderController::class, 'index'])->name('index');
+        Route::post('/store',[GenderController::class, 'store'])->name('store');
+        Route::get('/edit/{id}',[GenderController::class, 'edit'])->name('edit');
+        Route::get('/delete/{id}',[GenderController::class, 'delete'])->name('delete');
+    });
 
     Route::group(['prefix' => 'academy/class', 'as' => 'class.'], function () {
         Route::get('/',[ClassController::class, 'index'])->name('index');
@@ -67,6 +112,15 @@ Route::group(['middleware'=>['auth']], function() {
         Route::post('/store',[SectionController::class, 'store'])->name('store');
         Route::get('/edit/{id}',[SectionController::class, 'edit'])->name('edit');
         Route::get('/delete/{id}',[SectionController::class, 'delete'])->name('delete');
+    });
+    
+    Route::group(['prefix' => 'student', 'as' => 'student.'], function () {
+        Route::get('/',[StudentController::class, 'index'])->name('index');
+        Route::get('/create',[StudentController::class, 'create'])->name('create');
+        Route::post('/store',[StudentController::class, 'store'])->name('store');
+        Route::get('/edit/{id}',[StudentController::class, 'edit'])->name('edit');
+        Route::post('/update/{id}',[StudentController::class, 'update'])->name('update');
+        Route::get('/delete/{id}',[StudentController::class, 'delete'])->name('delete');
     });
 });
 

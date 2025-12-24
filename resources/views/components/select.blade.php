@@ -1,4 +1,4 @@
-<div class="form-group mb-2">
+    <div class="form-group mb-2">
     @if (!$attributes['hide-label'])
         <label class="form-label" for="{{ $id }}">
             {{ ucwords(str_replace('_', ' ', $id)) }}
@@ -24,7 +24,7 @@
                 @endphp
                 {{ $selected ? 'selected' : '' }}
                 value="{{ is_array($option) ? $option['id'] : $option->id }}">
-            {{ is_array($option) ? $option['name'] : $option->name }}</option>
+            {{ is_array($option) ? ucfirst($option['name']) : ucfirst($option->name) }}</option>
         @endforeach
     </select>
 

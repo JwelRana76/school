@@ -25,7 +25,25 @@
     <link rel="stylesheet" href="/css/bootstrap-select.min.css">
     
     <link rel="stylesheet" href="/css/custom.css">
-
+    <style>
+        .edit_button{
+            padding-left: 2px;
+            padding-right: 2px;
+            font-size: 14px;
+            background: #0b8dd9;
+            border-radius: 20%;
+            color: white;
+        }
+        .delete_button{
+            padding-left: 2px;
+            padding-right: 2px;
+            font-size: 14px;
+            background: #c4051fee;
+            border-radius: 20%;
+            color: white;
+            margin-left: 5px
+        }
+    </style>
 </head>
 
 <body id="page-top">

@@ -21,6 +21,9 @@ class DistrictController extends Controller
             $data = $this->model::all();
 
             return DataTables::of($data)
+            ->addColumn('division', function ($item) {
+                return optional($item->division)->name;
+            })
             ->addColumn('action', fn($item) => view('pages.district.action', compact('item'))->render())
             ->make(true);
         }
@@ -65,7 +68,7 @@ class DistrictController extends Controller
         if ($request->id == null) {
             $request->validate([
                 'name' => 'required',
-                'code' => 'required|unique:district'
+                'code' => 'required|unique:districts'
             ]);
         }
         $data = $request->all();
@@ -77,18 +80,18 @@ class DistrictController extends Controller
                 'code' => $data['code'],
                 'division_id' => $data['division_id'],
                 ]);
-                $message = ['success' => 'Division Inserted Successfully'];
+                $message = ['success' => 'District Inserted Successfully'];
             } else {
                 $this->model::findOrFail($data['id'])->update([
                 'name' => strtolower($data['name']),
                 'code' => $data['code'],
                 'division_id' => $data['division_id'],
                 ]);
-                $message = ['success' => 'Division Updated Successfully'];
+                $message = ['success' => 'District Updated Successfully'];
             }
             DB::commit();
-            $divisions = Division::all();
-            return $divisions;
+            $districts = District::all();
+            return $districts;
         } catch (Exception $th) {
             DB::rollback();
             dd($th->getMessage());
@@ -105,6 +108,9 @@ class DistrictController extends Controller
             $data = $this->model::all();
 
             return DataTables::of($data)
+            ->addColumn('division', function ($item) {
+                return optional($item->division)->name;
+            })
             ->addColumn('action', fn($item) => view('pages.district.action', compact('item'))->render())
             ->make(true);
         }

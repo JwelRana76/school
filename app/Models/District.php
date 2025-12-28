@@ -17,4 +17,9 @@ class District extends Model
     ];
     
     protected $guarded = ['id'];
+
+    public function division()
+    {
+        return $this->belongsTo(Division::class, 'division_id', 'id');
+    }
 }

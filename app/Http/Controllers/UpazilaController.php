@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\District;
+use App\Models\Division;
 use App\Models\Upazila;
 use Exception;
 use Illuminate\Http\Request;
@@ -15,14 +17,19 @@ class UpazilaController extends Controller
     public function index()
     {
         $columns = $this->model::$columns;
+        $district = District::all();
+        $divisions = Division::all();
         if (request()->ajax()) {
             $data = $this->model::all();
 
             return DataTables::of($data)
+            ->addColumn('district', function ($item) {
+                return optional($item->district)->name;
+            })
             ->addColumn('action', fn($item) => view('pages.upazila.action', compact('item'))->render())
             ->make(true);
         }
-        return view('pages.upazila.index', compact('columns'));
+        return view('pages.upazila.index', compact('columns','district','divisions'));
     }
 
     public function store(Request $request)
@@ -62,14 +69,19 @@ class UpazilaController extends Controller
         $id = base64_decode($id);
         $upazila = $this->model::findOrFail($id);
         $columns = $this->model::$columns;
+        $district = District::all();
+        $divisions = Division::all();
         if (request()->ajax()) {
             $data = $this->model::all();
 
             return DataTables::of($data)
+            ->addColumn('district', function ($item) {
+                return optional($item->district)->name;
+            })
             ->addColumn('action', fn($item) => view('pages.upazila.action', compact('item'))->render())
             ->make(true);
         }
-        return view('pages.upazila.index', compact('columns', 'upazila'));
+        return view('pages.upazila.index', compact('columns', 'upazila','district','divisions'));
     }
     function delete($id)
     {

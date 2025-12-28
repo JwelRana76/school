@@ -1,5 +1,5 @@
-<x-admin title="Division">
-    <x-page-header head="Division" />
+<x-admin title="District">
+    <x-page-header head="District" />
     <div class="row">
         <div class="col-md-3">
             <div class="card p-3">
@@ -10,9 +10,9 @@
                     <label for="code">Code</label>
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" name="code" id="code" value="{{ $district->code ?? old('code') }}" >
-                        <div class="input-group-append">
-                            <input type="button" class="input-group-text" id="generate_code" value="Gen" >
-                        </div>
+                        <span style="cursor: pointer; border-radius: 0;" class="input-group-text" id="generate_code">
+                            <i class="fa fa-barcode"></i>
+                        </span>
                     </div>
                     <x-button value="Save" />
                 </x-form>

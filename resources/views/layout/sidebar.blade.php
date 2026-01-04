@@ -42,6 +42,8 @@
                 <a class="collapse-item {{Request::is('academy/class*')?'active':''}}" href="{{route('class.index')}}"><i class="fas fa-fw fa-arrow-right mr-2"></i> Class</a>
                 <a class="collapse-item {{Request::is('academy/section*')?'active':''}}" href="{{route('section.index')}}"><i class="fas fa-fw fa-arrow-right mr-2"></i> Section</a>
                 <a class="collapse-item {{Request::is('academy/session*')?'active':''}}" href="{{route('session.index')}}"><i class="fas fa-fw fa-arrow-right mr-2"></i> Session</a>
+                <a class="collapse-item {{Request::is('academy/group*')?'active':''}}" href="{{route('group.index')}}"><i class="fas fa-fw fa-arrow-right mr-2"></i> Group</a>
+                <a class="collapse-item {{Request::is('academy/room*')?'active':''}}" href="{{route('room.index')}}"><i class="fas fa-fw fa-arrow-right mr-2"></i> Room</a>
             </div>
         </div>
     </li>
@@ -55,6 +57,18 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item {{Request::is('student/create*')?'active':''}}" href="{{route('student.create')}}"><i class="fas fa-fw fa-arrow-right mr-2"></i> Create</a>
                 <a class="collapse-item {{Request::is('student/index*')?'active':''}}" href="{{route('student.index')}}"><i class="fas fa-fw fa-arrow-right mr-2"></i> List</a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {{Request::is('hrm*')?'':'collapsed'}}" href="#" data-toggle="collapse" data-target="#hrm"
+            aria-expanded="true" aria-controls="hrm">
+            <i class="fas fa-fw fa-home"></i>
+            <span>HRM</span>
+        </a>
+        <div id="hrm" class="collapse {{Request::is('hrm*')?'show':''}}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item {{Request::is('hrm/department*')?'active':''}}" href="{{route('department.index')}}"><i class="fas fa-fw fa-arrow-right mr-2"></i> Department</a>
             </div>
         </div>
     </li>

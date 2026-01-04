@@ -7,10 +7,13 @@ use App\Http\Controllers\SiteSettingController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClassController;
+use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\DivisionController;
 use App\Http\Controllers\GenderController;
+use App\Http\Controllers\GroupController;
 use App\Http\Controllers\ReligionController;
+use App\Http\Controllers\RoomController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\StudentController;
@@ -94,7 +97,7 @@ Route::group(['middleware'=>['auth']], function() {
         Route::get('/edit/{id}',[GenderController::class, 'edit'])->name('edit');
         Route::get('/delete/{id}',[GenderController::class, 'delete'])->name('delete');
     });
-
+    // Academic section route start
     Route::group(['prefix' => 'academy/class', 'as' => 'class.'], function () {
         Route::get('/',[ClassController::class, 'index'])->name('index');
         Route::post('/store',[ClassController::class, 'store'])->name('store');
@@ -113,7 +116,29 @@ Route::group(['middleware'=>['auth']], function() {
         Route::get('/edit/{id}',[SectionController::class, 'edit'])->name('edit');
         Route::get('/delete/{id}',[SectionController::class, 'delete'])->name('delete');
     });
-    
+    Route::group(['prefix' => 'academy/group', 'as' => 'group.'], function () {
+        Route::get('/',[GroupController::class, 'index'])->name('index');
+        Route::post('/store',[GroupController::class, 'store'])->name('store');
+        Route::get('/edit/{id}',[GroupController::class, 'edit'])->name('edit');
+        Route::get('/delete/{id}',[GroupController::class, 'delete'])->name('delete');
+    });
+    Route::group(['prefix' => 'academy/room', 'as' => 'room.'], function () {
+        Route::get('/',[RoomController::class, 'index'])->name('index');
+        Route::post('/store',[RoomController::class, 'store'])->name('store');
+        Route::get('/edit/{id}',[RoomController::class, 'edit'])->name('edit');
+        Route::get('/delete/{id}',[RoomController::class, 'delete'])->name('delete');
+    });
+    // academic route section end 
+
+    // hrm section router start 
+    Route::group(['prefix' => 'hrm/department', 'as' => 'department.'], function () {
+        Route::get('/',[DepartmentController::class, 'index'])->name('index');
+        Route::post('/store',[DepartmentController::class, 'store'])->name('store');
+        Route::get('/edit/{id}',[DepartmentController::class, 'edit'])->name('edit');
+        Route::get('/delete/{id}',[DepartmentController::class, 'delete'])->name('delete');
+    });
+    // hrm router section end 
+
     Route::group(['prefix' => 'student', 'as' => 'student.'], function () {
         Route::get('/',[StudentController::class, 'index'])->name('index');
         Route::get('/create',[StudentController::class, 'create'])->name('create');
